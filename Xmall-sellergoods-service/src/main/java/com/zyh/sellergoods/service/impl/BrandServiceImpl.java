@@ -6,6 +6,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zyh.mapper.TbBrandMapper;
 import com.zyh.pojo.TbBrand;
+import com.zyh.pojo.TbBrandExample;
+import com.zyh.pojo.TbBrandExample.Criteria;
 import com.zyh.sellergoods.service.BrandService;
 
 import entity.PageResult;
@@ -33,6 +35,42 @@ public class BrandServiceImpl implements BrandService {
 	@Override
 	public void add(TbBrand brand) {
 		brandMapper.insert(brand);		
+	}
+
+	@Override
+	public TbBrand findOne(Long id) {
+		return brandMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void update(TbBrand brand) {
+		brandMapper.updateByPrimaryKey(brand);
+		
+	}
+
+	//ÅúÁ¿É¾³ý
+	@Override
+	public void delete(Long[] ids) {
+		for(Long id:ids){
+			brandMapper.deleteByPrimaryKey(id);
+		}		
+	}
+
+	@Override
+	public PageResult findPage(TbBrand brand, int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);		
+		TbBrandExample example=new TbBrandExample();
+		Criteria criteria = example.createCriteria();		
+		if(brand!=null){
+			if(brand.getName()!=null && brand.getName().length()>0){
+				criteria.andNameLike("%"+brand.getName()+"%");
+			}
+			if(brand.getFirstChar()!=null && brand.getFirstChar().length()>0){
+				criteria.andFirstCharEqualTo(brand.getFirstChar());
+			}		
+		}		
+		Page<TbBrand> page= (Page<TbBrand>)brandMapper.selectByExample(example);	
+		return new PageResult(page.getTotal(), page.getResult());
 	}
     
    
