@@ -5,6 +5,7 @@ import com.zyh.pojo.TbBrand;
 import entity.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface BrandService {
@@ -41,4 +42,11 @@ public interface BrandService {
 	 * @return
 	 */
 	public PageResult findPage(TbBrand brand, int pageNum,int pageSize);
+
+	/**
+	 * 品牌下拉框数据
+	 */
+	public List<Map> selectOptionList();
+
+
 }

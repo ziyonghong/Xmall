@@ -1,5 +1,7 @@
 package com.zyh.sellergoods.service;
 import java.util.List;
+import java.util.Map;
+
 import com.zyh.pojo.TbSpecification;
 import com.zyh.pojogroup.Specification;
 
@@ -64,4 +66,6 @@ public interface SpecificationService {
 	 * 增加
 	*/
 	public void add(Specification specification);
+	
+	public List<Map> selectOptionList();
 }

@@ -1,6 +1,8 @@
 package com.zyh.sellergoods.service.impl;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -142,6 +144,12 @@ public class SpecificationServiceImpl implements SpecificationService {
 			specificationOption.setSpecId(specification.getSpecification().getId());// 设置规格ID
 			specificationOptionMapper.insert(specificationOption);
 		}
+	}
+
+	@Override
+	public List<Map> selectOptionList() {
+		// TODO Auto-generated method stub
+		return specificationMapper.selectOptionList();
 	}
 
 }
