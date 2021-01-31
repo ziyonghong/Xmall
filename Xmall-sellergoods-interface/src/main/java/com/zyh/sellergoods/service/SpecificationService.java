@@ -1,61 +1,67 @@
 package com.zyh.sellergoods.service;
 import java.util.List;
 import com.zyh.pojo.TbSpecification;
+import com.zyh.pojogroup.Specification;
 
 import entity.PageResult;
 /**
- * 服务层接口
+ * 鏈嶅姟灞傛帴鍙�
  * @author Administrator
  *
  */
 public interface SpecificationService {
 
 	/**
-	 * 返回全部列表
+	 * 杩斿洖鍏ㄩ儴鍒楄〃
 	 * @return
 	 */
 	public List<TbSpecification> findAll();
 	
 	
 	/**
-	 * 返回分页列表
+	 * 杩斿洖鍒嗛〉鍒楄〃
 	 * @return
 	 */
 	public PageResult findPage(int pageNum,int pageSize);
 	
 	
 	/**
-	 * 增加
+	 * 澧炲姞
 	*/
 	public void add(TbSpecification specification);
 	
 	
 	/**
-	 * 修改
+	 * 淇敼
 	 */
-	public void update(TbSpecification specification);
+	public void update(Specification specification);
 	
 
 	/**
-	 * 根据ID获取实体
+	 * 鏍规嵁ID鑾峰彇瀹炰綋
 	 * @param id
 	 * @return
 	 */
-	public TbSpecification findOne(Long id);
+	public Specification findOne(Long id);
 	
 	
 	/**
-	 * 批量删除
+	 * 鎵归噺鍒犻櫎
 	 * @param ids
 	 */
 	public void delete(Long [] ids);
 
 	/**
-	 * 分页
-	 * @param pageNum 当前页 码
-	 * @param pageSize 每页记录数
+	 * 鍒嗛〉
+	 * @param pageNum 褰撳墠椤� 鐮�
+	 * @param pageSize 姣忛〉璁板綍鏁�
 	 * @return
 	 */
 	public PageResult findPage(TbSpecification specification, int pageNum,int pageSize);
 	
+	
+	/**
+	 * 增加
+	*/
+	public void add(Specification specification);
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zyh.pojo.TbSpecification;
+import com.zyh.pojogroup.Specification;
 import com.zyh.sellergoods.service.SpecificationService;
 
 import entity.PageResult;
@@ -47,13 +48,13 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbSpecification specification){
+	public Result add(@RequestBody Specification specification){
 		try {
 			specificationService.add(specification);
-			return new Result(true, "澧炲姞鎴愬姛");
+			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "澧炲姞澶辫触");
+			return new Result(false, "增加失败");
 		}
 	}
 	
@@ -63,13 +64,13 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody TbSpecification specification){
+	public Result update(@RequestBody Specification specification){
 		try {
 			specificationService.update(specification);
-			return new Result(true, "淇敼鎴愬姛");
+			return new Result(true, "修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "淇敼澶辫触");
+			return new Result(false, "修改失败");
 		}
 	}	
 	
@@ -79,7 +80,7 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbSpecification findOne(Long id){
+	public Specification findOne(Long id){
 		return specificationService.findOne(id);		
 	}
 	
