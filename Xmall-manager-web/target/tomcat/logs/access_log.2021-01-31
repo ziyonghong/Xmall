@@ -171,3 +171,13 @@
 0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:36:50 +0800] "POST /typeTemplate/search.do?page=1&rows=10 HTTP/1.1" 200 1005 http-bio-9101-exec-4 46
 0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:36:54 +0800] "GET /plugins/select2/select2-spinner.gif HTTP/1.1" 304 - http-bio-9101-exec-4 2
 0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:36:55 +0800] "GET /plugins/select2/select2.png HTTP/1.1" 304 - http-bio-9101-exec-4 1
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:45:29 +0800] "GET /specification/selectOptionList HTTP/1.1" 404 1011 http-bio-9101-exec-1 40
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:45:58 +0800] "GET /specification/selectOptionList.do HTTP/1.1" 200 193 http-bio-9101-exec-3 11174
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:02 +0800] "GET /specification/selectOptionList.do HTTP/1.1" 200 193 http-bio-9101-exec-5 21
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "GET /admin/type_template.html HTTP/1.1" 200 6808 http-bio-9101-exec-7 3
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "GET /js/service/specificationService.js HTTP/1.1" 200 1007 http-bio-9101-exec-6 3
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "GET /js/service/brandService.js HTTP/1.1" 304 - http-bio-9101-exec-8 2
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "GET /js/controller/typeTemplateController.js HTTP/1.1" 200 2459 http-bio-9101-exec-9 4
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "GET /specification/selectOptionList.do HTTP/1.1" 200 193 http-bio-9101-exec-9 7
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "POST /typeTemplate/search.do?page=1&rows=10 HTTP/1.1" 200 1005 http-bio-9101-exec-9 148
+0:0:0:0:0:0:0:1 - - [31/Jan/2021:14:53:06 +0800] "POST /typeTemplate/search.do?page=1&rows=10 HTTP/1.1" 200 1005 http-bio-9101-exec-9 10
