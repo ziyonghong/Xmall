@@ -50,9 +50,9 @@ public class SellerController {
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbSeller seller){
 		//√‹¬Îº”√‹
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		String password = passwordEncoder.encode(seller.getPassword());
-//		seller.setPassword(password);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String password = passwordEncoder.encode(seller.getPassword());
+		seller.setPassword(password);
 		
 		try {
 			sellerService.add(seller);
