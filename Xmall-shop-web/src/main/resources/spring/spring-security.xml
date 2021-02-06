@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
 <!-- 以下页面不被拦截 -->
@@ -23,8 +26,22 @@
 	</http>
 	<!-- 认证管理器 -->
 	<authentication-manager>
-		<authentication-provider user-service-ref="userDetailService">			
+		<authentication-provider user-service-ref="userDetailService">	
+			<password-encoder ref="bcryptEncoder"></password-encoder>			
 		</authentication-provider>	
 	</authentication-manager>
-	<beans:bean id="userDetailService"
- class="com.zyh.service.UserDetailServiceImpl"></beans:bean>
+	
+	 <!-- 引用dubbo 服务 -->	
+	<dubbo:application name="Xmall-shop-web" />
+	<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+	<dubbo:reference id="sellerService"  interface="com.zyh.sellergoods.service.SellerService" >
+	</dubbo:reference>
+	
+	<beans:bean id="userDetailService" class="com.zyh.service.UserDetailsServiceImpl">
+	<beans:property name="sellerService" ref="sellerService"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="bcryptEncoder"  
+        class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+ </beans:beans>
