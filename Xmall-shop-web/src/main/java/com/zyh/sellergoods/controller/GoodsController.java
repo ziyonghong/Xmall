@@ -1,11 +1,13 @@
 package com.zyh.sellergoods.controller;
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zyh.pojo.TbGoods;
+import com.zyh.pojogroup.Goods;
 import com.zyh.sellergoods.service.GoodsService;
 
 import entity.PageResult;
@@ -47,13 +49,16 @@ public class GoodsController {
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbGoods goods){
+	public Result add(@RequestBody Goods goods){
+		//获取登录名
+		String sellerId = SecurityContextHolder.getContext().getAuthentication().getName();
+		goods.getGoods().setSellerId(sellerId);//设置商家ID
 		try {
 			goodsService.add(goods);
-			return new Result(true, "澧炲姞鎴愬姛");
+			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "澧炲姞澶辫触");
+			return new Result(false, "增加失败");
 		}
 	}
 	
