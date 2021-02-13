@@ -39,5 +39,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-pojo"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-sellergoods-interface"/>
 	<classpathentry kind="var" path="spring-security-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
