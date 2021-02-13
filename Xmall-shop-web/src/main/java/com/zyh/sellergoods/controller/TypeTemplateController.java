@@ -1,6 +1,7 @@
 package com.zyh.sellergoods.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -114,4 +115,8 @@ public class TypeTemplateController {
 		return typeTemplateService.findPage(typeTemplate, page, rows);		
 	}
 	
+	@RequestMapping("/findSpecList")
+	public List<Map> findSpecList(Long id){
+		return typeTemplateService.findSpecList(id);
+	}
 }
