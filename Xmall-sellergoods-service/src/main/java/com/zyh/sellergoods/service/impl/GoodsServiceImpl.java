@@ -206,7 +206,11 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public void delete(Long[] ids) {
 		for (Long id : ids) {
-			goodsMapper.deleteByPrimaryKey(id);
+			//goodsMapper.deleteByPrimaryKey(id);
+			//去掉物理删除，我们只需要做一个标记进行逻辑删除
+			TbGoods goods = goodsMapper.selectByPrimaryKey(id);
+			goods.setIsDelete("1");
+			goodsMapper.updateByPrimaryKey(goods);
 		}
 	}
 
@@ -217,6 +221,8 @@ public class GoodsServiceImpl implements GoodsService {
 		TbGoodsExample example = new TbGoodsExample();
 		Criteria criteria = example.createCriteria();
 
+		criteria.andIsDeleteIsNull();//非删除状态
+		
 		if (goods != null) {
 			if (goods.getSellerId() != null && goods.getSellerId().length() > 0) {
 				// criteria.andSellerIdLike("%" + goods.getSellerId() + "%");
