@@ -64,4 +64,12 @@ public interface GoodsService {
 	 */
 	public PageResult findPage(TbGoods goods, int pageNum, int pageSize);
 
+	
+	/**
+	 * 批量修改状态
+	 * @param ids
+	 * @param status
+	 */
+	public void updateStatus(Long []ids,String status);
+
 }
