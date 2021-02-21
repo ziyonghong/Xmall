@@ -281,5 +281,6 @@
 		<module>Xmall-shop-web</module>
 		<module>Xmall-content-interface</module>
 		<module>Xmall-content-service</module>
+		<module>Xmall-portal-web</module>
 	</modules>
 </project>

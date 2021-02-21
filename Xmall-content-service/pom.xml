@@ -88,6 +88,11 @@
 		<artifactId>Xmall-content-interface</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
+	<dependency>
+		<groupId>com.zyh</groupId>
+		<artifactId>Xmall-common</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
    </dependencies>
   
   <build>  

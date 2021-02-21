@@ -42,5 +42,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-dao"/>
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/com/github/pagehelper/pagehelper/4.0.0/pagehelper-4.0.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-content-interface"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME"/>
+	<classpathentry kind="var" path="spring-data-commons-1.12.2.RELEASE.jar"/>
+	<classpathentry kind="var" path="spring-data-keyvalue-1.1.2.RELEASE.jar"/>
+	<classpathentry kind="var" path="spring-data-redis-1.7.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

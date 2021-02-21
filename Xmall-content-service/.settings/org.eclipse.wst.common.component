@@ -15,6 +15,9 @@
         <dependent-module archiveName="Xmall-content-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Xmall-content-interface/Xmall-content-interface">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="Xmall-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Xmall-common/Xmall-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="Xmall-content-service"/>
         <property name="java-output-path" value="/Xmall-content-service/build/classes"/>
     </wb-module>

@@ -32,6 +32,10 @@
 
 ​		商家管理依赖 sellergoods-service
 
+​	-portal-web  网站前台入口    [port：9103]
+
+​		网站前台入口依赖 content-service
+
 
 
 Run As -> Maven build ->tomcat7:run 启动tomcat插件
