@@ -279,5 +279,7 @@
 		<module>Xmall-sellergoods-service</module>
 		<module>Xmall-manager-web</module>
 		<module>Xmall-shop-web</module>
+		<module>Xmall-content-interface</module>
+		<module>Xmall-content-service</module>
 	</modules>
 </project>
