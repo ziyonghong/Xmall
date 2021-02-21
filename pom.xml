@@ -282,5 +282,6 @@
 		<module>Xmall-content-interface</module>
 		<module>Xmall-content-service</module>
 		<module>Xmall-portal-web</module>
+		<module>Xmall-solr-util</module>
 	</modules>
 </project>

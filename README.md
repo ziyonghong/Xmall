@@ -75,3 +75,11 @@ Doubble的注册中心Zookeeper 服务启动步骤：
 ​                关闭服务： ./zkServer.sh stop
 
 ​		查看状态：./zkServer.sh status （启动状态 **Mode：standalone**， 未启动状态： Error）
+
+
+
+
+
+
+
+搜索服务： solr放置在F:\project\apache-tomcat-solr 的tomcat中， 启动bin 目录下startup  访问http://localhost:8080/solr 即可。
