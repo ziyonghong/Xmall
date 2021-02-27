@@ -37,6 +37,9 @@
 	<classpathentry kind="var" path="M2_REPO/com/alibaba/fastjson/1.2.28/fastjson-1.2.28.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javassist/javassist/3.11.0.GA/javassist-3.11.0.GA.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.10/commons-codec-1.10.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-solr/1.5.5.RELEASE/spring-data-solr-1.5.5.RELEASE.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-pojo"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/springframework/data/spring-data-solr/1.5.5.RELEASE/spring-data-solr-1.5.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/apache/solr/solr-solrj/4.10.3/solr-solrj-4.10.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

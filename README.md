@@ -83,3 +83,9 @@ Doubble的注册中心Zookeeper 服务启动步骤：
 
 
 搜索服务： solr放置在F:\project\apache-tomcat-solr 的tomcat中， 启动bin 目录下startup  访问http://localhost:8080/solr 即可。
+
+
+
+
+
+<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-solr/1.5.5.RELEASE/spring-data-solr-1.5.5.RELEASE.jar"/>
