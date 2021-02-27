@@ -16,11 +16,15 @@
 
 ​	-content-interface 广告管理服务接口模块
 
+​	-search-interface 搜索服务接口模块
+
 **Xmall-xxxxx-service   某服务层实现**
 
 ​	-sellergoods-service 商家商品服务模块    [port：9001]
 
 ​	-content-service 广告管理服务模块   [port：9002]
+
+​	-search-service 搜索服务模块 [port：9004]
 
 **Xmall-xxxxx-web     某web工程**  
 
@@ -35,6 +39,8 @@
 ​	-portal-web  网站前台入口    [port：9103]
 
 ​		网站前台入口依赖 content-service
+
+​	-search-web  搜索web   [port：9104]
 
 
 
@@ -84,8 +90,3 @@ Doubble的注册中心Zookeeper 服务启动步骤：
 
 搜索服务： solr放置在F:\project\apache-tomcat-solr 的tomcat中， 启动bin 目录下startup  访问http://localhost:8080/solr 即可。
 
-
-
-
-
-<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-solr/1.5.5.RELEASE/spring-data-solr-1.5.5.RELEASE.jar"/>

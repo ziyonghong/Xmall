@@ -283,5 +283,8 @@
 		<module>Xmall-content-service</module>
 		<module>Xmall-portal-web</module>
 		<module>Xmall-solr-util</module>
+		<module>Xmall-search-interface</module>
+		<module>Xmall-search-service</module>
+		<module>Xmall-search-web</module>
 	</modules>
 </project>

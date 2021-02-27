@@ -1,6 +1,7 @@
 package com.zyh.solrutil;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -8,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSON;
 import com.zyh.mapper.TbItemMapper;
 import com.zyh.pojo.TbItem;
 import com.zyh.pojo.TbItemExample;
