@@ -86,7 +86,30 @@ Doubble的注册中心Zookeeper 服务启动步骤：
 
 
 
+solr搜索服务启动：
+
+window启动方式：双击在F:\project\apache-tomcat-solr\bin目录在的startup.bat
+
+（已将加压的solr的war包放入tomcat下的webapps，并加入的ik中文分词器）
+
+访问 http://localhost:8080/solr 
 
 
-搜索服务： solr放置在F:\project\apache-tomcat-solr 的tomcat中， 启动bin 目录下startup  访问http://localhost:8080/solr 即可。
 
+redis启动：
+
+window启动方式： 放置于F:\project\software\Redis\redis2.8win32 目录下
+
+双击 redis-server.exe 即可。
+
+
+
+
+
+
+
+
+
+登录账号信息：
+
+运营商管理后台   账号：admin   密码：123456

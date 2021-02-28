@@ -42,5 +42,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-pojo"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-dao"/>
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/com/github/pagehelper/pagehelper/4.0.0/pagehelper-4.0.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/springframework/data/spring-data-redis/1.7.2.RELEASE/spring-data-redis-1.7.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
