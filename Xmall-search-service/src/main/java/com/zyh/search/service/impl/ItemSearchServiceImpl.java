@@ -217,4 +217,20 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		return map;
 	}
 
+	@Override
+	public void importList(List list) {
+		solrTemplate.saveBeans(list);
+		solrTemplate.commit();
+	}
+
+	@Override
+	public void deleteByGoodsIds(List goodsIdList) {
+		System.out.println("É¾³ýÉÌÆ·ID"+goodsIdList);
+		Query query=new SimpleQuery();		
+		Criteria criteria=new Criteria("item_goodsid").in(goodsIdList);
+		query.addCriteria(criteria);
+		solrTemplate.delete(query);
+		solrTemplate.commit();
+	}
+
 }

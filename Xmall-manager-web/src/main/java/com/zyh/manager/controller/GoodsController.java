@@ -1,4 +1,5 @@
 package com.zyh.manager.controller;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -6,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zyh.pojo.TbGoods;
+import com.zyh.pojo.TbItem;
 import com.zyh.pojogroup.Goods;
+import com.zyh.search.service.ItemSearchService;
 import com.zyh.sellergoods.service.GoodsService;
 
 import entity.PageResult;
@@ -93,6 +96,7 @@ public class GoodsController {
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
+			itemSearchService.deleteByGoodsIds(Arrays.asList(ids));
 			return new Result(true, "鍒犻櫎鎴愬姛"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,10 +121,26 @@ public class GoodsController {
 	 * @param ids
 	 * @param status
 	 */
+	
+	@Reference
+	private ItemSearchService itemSearchService;
+	
 	@RequestMapping("/updateStatus")
 	public Result updateStatus(Long[] ids, String status){		
 		try {
 			goodsService.updateStatus(ids, status);
+			
+			//按照SPU ID查询 SKU列表(状态为1)		
+			if(status.equals("1")){//审核通过
+				List<TbItem> itemList = goodsService.findItemListByGoodsIdandStatus(ids, status);						
+				//调用搜索接口实现数据批量导入
+				if(itemList.size()>0){				
+					itemSearchService.importList(itemList);
+				}else{
+					System.out.println("没有明细数据");
+				}
+			}
+			
 			return new Result(true, "成功");
 		} catch (Exception e) {
 			e.printStackTrace();

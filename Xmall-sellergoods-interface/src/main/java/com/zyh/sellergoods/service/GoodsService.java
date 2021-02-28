@@ -2,6 +2,7 @@ package com.zyh.sellergoods.service;
 
 import java.util.List;
 import com.zyh.pojo.TbGoods;
+import com.zyh.pojo.TbItem;
 import com.zyh.pojogroup.Goods;
 
 import entity.PageResult;
@@ -72,4 +73,12 @@ public interface GoodsService {
 	 */
 	public void updateStatus(Long []ids,String status);
 
+	/**
+	 * 根据商品ID和状态查询Item表信息  
+	 * @param goodsId
+	 * @param status
+	 * @return
+	 */
+	public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status );
+	
 }

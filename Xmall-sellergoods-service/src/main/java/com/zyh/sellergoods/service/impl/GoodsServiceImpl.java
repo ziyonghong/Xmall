@@ -1,5 +1,6 @@
 package com.zyh.sellergoods.service.impl;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -86,8 +87,8 @@ public class GoodsServiceImpl implements GoodsService {
 		goodsMapper.insert(goods.getGoods());
 		goods.getGoodsDesc().setGoodsId(goods.getGoods().getId());// 设置ID
 		goodsDescMapper.insert(goods.getGoodsDesc());// 插入商品扩展数据
-		saveItemList(goods);//插入商品SKU列表数据
-		
+		saveItemList(goods);// 插入商品SKU列表数据
+
 	}
 
 	private void setItemValus(Goods goods, TbItem item) {
@@ -120,23 +121,24 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	public void update(Goods goods) {
-		goods.getGoods().setAuditStatus("0");//设置未申请状态:如果是经过修改的商品，需要重新设置状态
-		goodsMapper.updateByPrimaryKey(goods.getGoods());//保存商品表
-		goodsDescMapper.updateByPrimaryKey(goods.getGoodsDesc());//保存商品扩展表
-		//删除原有的sku列表数据		
-		TbItemExample example=new TbItemExample();
+		goods.getGoods().setAuditStatus("0");// 设置未申请状态:如果是经过修改的商品，需要重新设置状态
+		goodsMapper.updateByPrimaryKey(goods.getGoods());// 保存商品表
+		goodsDescMapper.updateByPrimaryKey(goods.getGoodsDesc());// 保存商品扩展表
+		// 删除原有的sku列表数据
+		TbItemExample example = new TbItemExample();
 		com.zyh.pojo.TbItemExample.Criteria criteria = example.createCriteria();
-		criteria.andGoodsIdEqualTo(goods.getGoods().getId());	
+		criteria.andGoodsIdEqualTo(goods.getGoods().getId());
 		itemMapper.deleteByExample(example);
-		//添加新的sku列表数据
-		saveItemList(goods);//插入商品SKU列表数据	
+		// 添加新的sku列表数据
+		saveItemList(goods);// 插入商品SKU列表数据
 	}
 
 	/**
 	 * 插入SKU列表数据
+	 * 
 	 * @param goods
 	 */
-	private void saveItemList(Goods goods){		
+	private void saveItemList(Goods goods) {
 		if ("1".equals(goods.getGoods().getIsEnableSpec())) {
 			for (TbItem item : goods.getItemList()) {
 				// 标题
@@ -177,7 +179,7 @@ public class GoodsServiceImpl implements GoodsService {
 			item.setSpec("{}");
 			setItemValus(goods, item);
 			itemMapper.insert(item);
-		}	
+		}
 	}
 
 	/**
@@ -209,8 +211,8 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public void delete(Long[] ids) {
 		for (Long id : ids) {
-			//goodsMapper.deleteByPrimaryKey(id);
-			//去掉物理删除，我们只需要做一个标记进行逻辑删除
+			// goodsMapper.deleteByPrimaryKey(id);
+			// 去掉物理删除，我们只需要做一个标记进行逻辑删除
 			TbGoods goods = goodsMapper.selectByPrimaryKey(id);
 			goods.setIsDelete("1");
 			goodsMapper.updateByPrimaryKey(goods);
@@ -224,8 +226,8 @@ public class GoodsServiceImpl implements GoodsService {
 		TbGoodsExample example = new TbGoodsExample();
 		Criteria criteria = example.createCriteria();
 
-		criteria.andIsDeleteIsNull();//非删除状态
-		
+		criteria.andIsDeleteIsNull();// 非删除状态
+
 		if (goods != null) {
 			if (goods.getSellerId() != null && goods.getSellerId().length() > 0) {
 				// criteria.andSellerIdLike("%" + goods.getSellerId() + "%");
@@ -261,11 +263,20 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	public void updateStatus(Long[] ids, String status) {
-		for(Long id:ids){
+		for (Long id : ids) {
 			TbGoods goods = goodsMapper.selectByPrimaryKey(id);
 			goods.setAuditStatus(status);
 			goodsMapper.updateByPrimaryKey(goods);
 		}
+	}
+
+	@Override
+	public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status) {
+		TbItemExample example = new TbItemExample();
+		com.zyh.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+		criteria.andGoodsIdIn(Arrays.asList(goodsIds));
+		criteria.andStatusEqualTo(status);
+		return itemMapper.selectByExample(example);
 	}
 
 }
