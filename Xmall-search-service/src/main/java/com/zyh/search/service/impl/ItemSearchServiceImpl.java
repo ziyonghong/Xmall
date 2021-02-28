@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.data.solr.core.query.Criteria;
@@ -39,6 +40,10 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
 	@Override
 	public Map search(Map searchMap) {
+		// 关键字空格处理
+		String keywords = (String) searchMap.get("keywords");
+		searchMap.put("keywords", keywords.replace(" ", ""));
+
 		Map<String, Object> map = new HashMap<>();
 		// 1.查询列表
 		map.putAll(searchList(searchMap));
@@ -116,6 +121,18 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 			}
 		}
 
+		// 1.6 分页查询
+		Integer pageNo = (Integer) searchMap.get("pageNo");// 提取页码
+		if (pageNo == null) {
+			pageNo = 1;// 默认第一页
+		}
+		Integer pageSize = (Integer) searchMap.get("pageSize");// 每页记录数
+		if (pageSize == null) {
+			pageSize = 20;// 默认20
+		}
+		query.setOffset((pageNo - 1) * pageSize);// 从第几条记录查询
+		query.setRows(pageSize);
+
 		// ******** 获取高亮结果集 *********
 		HighlightPage<TbItem> page = solrTemplate.queryForHighlightPage(query, TbItem.class);
 		for (HighlightEntry<TbItem> h : page.getHighlighted()) {// 循环高亮入口集合
@@ -125,6 +142,24 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 			}
 		}
 		map.put("rows", page.getContent());
+
+		map.put("totalPages", page.getTotalPages());// 返回总页数
+		map.put("total", page.getTotalElements());// 返回总记录数
+
+		// 1.7排序
+		String sortValue = (String) searchMap.get("sort");// ASC DESC
+		String sortField = (String) searchMap.get("sortField");// 排序字段
+		if (sortValue != null && !sortValue.equals("")) {
+			if (sortValue.equals("ASC")) {
+				Sort sort = new Sort(Sort.Direction.ASC, "item_" + sortField);
+				query.addSort(sort);
+			}
+			if (sortValue.equals("DESC")) {
+				Sort sort = new Sort(Sort.Direction.DESC, "item_" + sortField);
+				query.addSort(sort);
+			}
+		}
+
 		return map;
 	}
 
