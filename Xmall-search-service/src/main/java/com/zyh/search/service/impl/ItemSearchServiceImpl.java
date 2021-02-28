@@ -10,10 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.data.solr.core.query.Criteria;
+import org.springframework.data.solr.core.query.FilterQuery;
 import org.springframework.data.solr.core.query.GroupOptions;
 import org.springframework.data.solr.core.query.HighlightOptions;
 import org.springframework.data.solr.core.query.HighlightQuery;
 import org.springframework.data.solr.core.query.Query;
+import org.springframework.data.solr.core.query.SimpleFilterQuery;
 import org.springframework.data.solr.core.query.SimpleHighlightQuery;
 import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.result.GroupEntry;
@@ -34,22 +36,25 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
 	@Autowired
 	private RedisTemplate redisTemplate;
-	
+
 	@Override
 	public Map search(Map searchMap) {
 		Map<String, Object> map = new HashMap<>();
 		// 1.查询列表
 		map.putAll(searchList(searchMap));
-		
 
 		// 2.根据关键字查询商品分类
 		List categoryList = searchCategoryList(searchMap);
 		map.put("categoryList", categoryList);
-		
 
 		// 3.查询品牌和规格列表
-		if (categoryList.size() > 0) {
-			map.putAll(searchBrandAndSpecList(categoryList.get(0)));
+		String categoryName = (String) searchMap.get("category");
+		if (!"".equals(categoryName)) {// 如果有分类名称
+			map.putAll(searchBrandAndSpecList(categoryName));
+		} else {// 如果没有分类名称，按照第一个查询
+			if (categoryList.size() > 0) {
+				map.putAll(searchBrandAndSpecList(categoryList.get(0)));
+			}
 		}
 		
 		return map;
@@ -68,9 +73,35 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		highlightOptions.setSimplePrefix("<em style='color:red'>");// 高亮前缀
 		highlightOptions.setSimplePostfix("</em>");// 高亮后缀
 		query.setHighlightOptions(highlightOptions);// 设置高亮选项
-		// 按照关键字查询
+		// 1.1按照关键字查询
 		Criteria criteria = new Criteria("item_keywords").is(searchMap.get("keywords"));
 		query.addCriteria(criteria);
+
+		// 1.2按照商品分类过滤
+		if (!"".equals(searchMap.get("category"))) {
+			Criteria filterCriteria = new Criteria("item_category").is(searchMap.get("category"));
+			FilterQuery filterQuery = new SimpleFilterQuery(filterCriteria);
+			query.addFilterQuery(filterQuery);
+		}
+
+		// 1.3按品牌筛选
+		if (!"".equals(searchMap.get("brand"))) {
+			Criteria filterCriteria = new Criteria("item_brand").is(searchMap.get("brand"));
+			FilterQuery filterQuery = new SimpleFilterQuery(filterCriteria);
+			query.addFilterQuery(filterQuery);
+		}
+
+		// 1.4过滤规格
+		if (searchMap.get("spec") != null) {
+			Map<String, String> specMap = (Map) searchMap.get("spec");
+			for (String key : specMap.keySet()) {
+				Criteria filterCriteria = new Criteria("item_spec_" + key).is(specMap.get(key));
+				FilterQuery filterQuery = new SimpleFilterQuery(filterCriteria);
+				query.addFilterQuery(filterQuery);
+			}
+		}
+
+		// ******** 获取高亮结果集 *********
 		HighlightPage<TbItem> page = solrTemplate.queryForHighlightPage(query, TbItem.class);
 		for (HighlightEntry<TbItem> h : page.getHighlighted()) {// 循环高亮入口集合
 			TbItem item = h.getEntity();// 获取原实体类
@@ -111,8 +142,6 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		return list;
 	}
 
-	
-
 	/**
 	 * 查询品牌和规格列表
 	 * 
@@ -127,13 +156,13 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 			// 根据模板ID查询品牌列表
 			List brandList = (List) redisTemplate.boundHashOps("brandList").get(typeId);
 			map.put("brandList", brandList);// 返回值添加品牌列表
-			
-//			System.out.println("品牌列表条数： "+brandList.size());
-			
+
+			// System.out.println("品牌列表条数： "+brandList.size());
+
 			// 根据模板ID查询规格列表
 			List specList = (List) redisTemplate.boundHashOps("specList").get(typeId);
 			map.put("specList", specList);
-//			System.out.println("规格列表条数： "+specList.size());
+			// System.out.println("规格列表条数： "+specList.size());
 		}
 		return map;
 	}
