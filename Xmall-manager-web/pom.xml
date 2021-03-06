@@ -113,12 +113,13 @@
 			<artifactId>Xmall-search-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		 -->
+		
 		<dependency>
 			<groupId>com.zyh</groupId>
 			<artifactId>Xmall-page-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		 -->
 	</dependencies>
 
 

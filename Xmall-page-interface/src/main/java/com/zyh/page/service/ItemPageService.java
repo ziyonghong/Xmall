@@ -11,4 +11,12 @@ public interface ItemPageService {
 	 * @param goodsId
 	 */
 	public boolean genItemHtml(Long goodsId);
+	
+	/**
+	 * É¾³ýÉÌÆ·ÏêÏ¸Ò³
+	 * @param goodsId
+	 * @return
+	 */
+	public boolean deleteItemHtml(Long[] goodsIds);
+	
 }

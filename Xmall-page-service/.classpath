@@ -6,6 +6,8 @@
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   
   <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/activemq/activemq-client/5.13.4/activemq-client-5.13.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.2.4.RELEASE/spring-context-4.2.4.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.2.4.RELEASE/spring-aop-4.2.4.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
