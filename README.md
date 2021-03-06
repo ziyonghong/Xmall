@@ -54,7 +54,7 @@
 
 
 
-引入消息中间件后：
+引入消息中间件[SpringJms]后：
 
 ![1614513476267](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\1614513476267.png)
 

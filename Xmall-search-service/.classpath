@@ -5,6 +5,7 @@
 	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
 	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
 	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.2.4.RELEASE/spring-context-4.2.4.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.2.4.RELEASE/spring-aop-4.2.4.RELEASE.jar"/>
@@ -44,6 +45,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-redis/1.7.2.RELEASE/spring-data-redis-1.7.2.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-jpa/2.0.9.RELEASE/spring-data-jpa-2.0.9.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-commons/1.11.5.RELEASE/spring-data-commons-1.11.5.RELEASE.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/activemq/activemq-client/5.13.4/activemq-client-5.13.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

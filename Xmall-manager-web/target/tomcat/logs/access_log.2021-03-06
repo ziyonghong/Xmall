@@ -242,3 +242,4 @@
 0:0:0:0:0:0:0:1 - - [06/Mar/2021:11:34:14 +0800] "GET /goods/genHtml.do?goodsId=149187842867955 HTTP/1.1" 500 13328 http-bio-9101-exec-1 11172
 0:0:0:0:0:0:0:1 - - [06/Mar/2021:11:50:16 +0800] "GET /goods/genHtml.do?goodsId=149187842867955 HTTP/1.1" 200 - http-bio-9101-exec-1 12630
 0:0:0:0:0:0:0:1 - - [06/Mar/2021:11:51:23 +0800] "GET /goods/genHtml.do?goodsId=149187842867955 HTTP/1.1" 200 - http-bio-9101-exec-4 91
+0:0:0:0:0:0:0:1 - - [06/Mar/2021:11:52:34 +0800] "GET /goods/genHtml.do?goodsId=149187842867955 HTTP/1.1" 200 - http-bio-9101-exec-1 12467

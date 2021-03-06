@@ -5,6 +5,7 @@
 	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
 	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
 	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.2.4.RELEASE/spring-context-4.2.4.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.2.4.RELEASE/spring-aop-4.2.4.RELEASE.jar"/>
@@ -25,6 +26,8 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-test/4.2.4.RELEASE/spring-test-4.2.4.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/alibaba/dubbo/2.8.4/dubbo-2.8.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/zookeeper/zookeeper/3.4.7/zookeeper-3.4.7.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/zookeeper/zookeeper/3.4.7/zookeeper-3.4.7.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/activemq/activemq-client/5.13.4/activemq-client-5.13.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.6.1/slf4j-log4j12-1.6.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16.jar"/>

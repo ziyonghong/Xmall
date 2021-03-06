@@ -36,6 +36,11 @@
 			<artifactId>spring-jms</artifactId>
 		</dependency>
 		<dependency>
+		<groupId>org.apache.activemq</groupId>
+		<artifactId>activemq-client</artifactId>
+		<version>5.13.4</version>
+	 </dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
@@ -102,11 +107,13 @@
 			<artifactId>Xmall-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>com.zyh</groupId>
 			<artifactId>Xmall-search-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		 -->
 		<dependency>
 			<groupId>com.zyh</groupId>
 			<artifactId>Xmall-page-interface</artifactId>
