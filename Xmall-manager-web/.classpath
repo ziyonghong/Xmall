@@ -42,5 +42,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-content-interface"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-search-interface"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-page-interface"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

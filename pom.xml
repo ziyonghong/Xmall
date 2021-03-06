@@ -286,5 +286,8 @@
 		<module>Xmall-search-interface</module>
 		<module>Xmall-search-service</module>
 		<module>Xmall-search-web</module>
+		<module>Xmall-page-interface</module>
+		<module>Xmall-page-service</module>
+		<module>Xmall-page-web</module>
 	</modules>
 </project>

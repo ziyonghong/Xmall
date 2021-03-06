@@ -18,6 +18,8 @@
 
 ​	-search-interface 搜索服务接口模块
 
+​	-page-interface 商品详情页 （用**Freemarker**实现网页静态化）
+
 **Xmall-xxxxx-service   某服务层实现**
 
 ​	-sellergoods-service 商家商品服务模块    [port：9001]
@@ -26,11 +28,13 @@
 
 ​	-search-service 搜索服务模块 [port：9004]
 
+​	-page-service 商品详情页  [port：9005]
+
 **Xmall-xxxxx-web     某web工程**  
 
 ​	-manager-web  运营商管理后台    [port：9101]
 
-​		运营商管理依赖sellergoods-service和content-service ，所以运行它时需要先启动这两个service
+​		运营商管理依赖sellergoods-service，content-service，search-service，page-service  ，所以运行它时需要先启动这些service
 
 ​	-shop-web  商家管理后台    [port：9102]
 
@@ -41,6 +45,18 @@
 ​		网站前台入口依赖 content-service
 
 ​	-search-web  搜索web   [port：9104]
+
+​	-page-web   商品详情静态化  [port：9105]
+
+
+
+![1614513304484](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\1614513304484.png)
+
+
+
+引入消息中间件后：
+
+![1614513476267](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\1614513476267.png)
 
 
 
@@ -104,12 +120,24 @@ window启动方式： 放置于F:\project\software\Redis\redis2.8win32 目录下
 
 
 
+ActiveMQ启动：
 
+位于虚拟机的Xmall/ apache-activemq-5.12.0下
 
+进入其bin目录下  `./activemq start` 启动
 
+[http://192.168.25.128:8161/](http://192.168.25.129:8161/)  即可进入ActiveMQ管理页面
+
+点击 `Manage ActiveMQ broker`进入管理页面    用户名和密码  均为 admin 
 
 
 
 登录账号信息：
 
 运营商管理后台   账号：admin   密码：123456
+
+
+
+
+
+网页静态化生成页面生成的位置：pagedir=f:\\project\\item\\
