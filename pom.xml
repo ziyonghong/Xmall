@@ -289,5 +289,8 @@
 		<module>Xmall-page-interface</module>
 		<module>Xmall-page-service</module>
 		<module>Xmall-page-web</module>
+		<module>Xmall-user-interface</module>
+		<module>Xmall-user-service</module>
+		<module>Xmall-user-web</module>
 	</modules>
 </project>

@@ -172,7 +172,7 @@
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a  class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">鍔犲叆璐墿杞�</a>
+										<a href="#" class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">鍔犲叆璐墿杞�</a>
 									</li>
 								</ul>
 							</div>

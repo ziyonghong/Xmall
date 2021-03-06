@@ -20,6 +20,8 @@
 
 ​	-page-interface 商品详情页 （用**Freemarker**实现网页静态化）
 
+​	-user-interface  用户服务接口（用阿里大于实现短信验证）
+
 **Xmall-xxxxx-service   某服务层实现**
 
 ​	-sellergoods-service 商家商品服务模块    [port：9001]
@@ -29,6 +31,8 @@
 ​	-search-service 搜索服务模块 [port：9004]
 
 ​	-page-service 商品详情页  [port：9005]
+
+​	-user-service 用户服务实现 [port：9006]
 
 **Xmall-xxxxx-web     某web工程**  
 
@@ -47,6 +51,8 @@
 ​	-search-web  搜索web   [port：9104]
 
 ​	-page-web   商品详情静态化  [port：9105]
+
+​	-user-web  用户中心web  [port：9106]
 
 
 
@@ -112,6 +118,16 @@ window启动方式：双击在F:\project\apache-tomcat-solr\bin目录在的start
 
 
 
+CAS实现单点登录：
+
+（已将加压的solr的war包放入tomcat下的webapps）
+
+启动tomcat后访问 http://localhost:8080/cas/login
+
+用户名和密码 casuser/Mellon
+
+
+
 redis启动：
 
 window启动方式： 放置于F:\project\software\Redis\redis2.8win32 目录下
@@ -129,6 +145,10 @@ ActiveMQ启动：
 [http://192.168.25.128:8161/](http://192.168.25.129:8161/)  即可进入ActiveMQ管理页面
 
 点击 `Manage ActiveMQ broker`进入管理页面    用户名和密码  均为 admin 
+
+
+
+
 
 
 
