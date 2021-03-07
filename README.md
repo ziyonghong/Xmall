@@ -22,9 +22,11 @@
 
 ​	-user-interface  用户服务接口（用阿里大于实现短信验证）
 
+​	-cart-interface 购物车服务接口
+
 **Xmall-xxxxx-service   某服务层实现**
 
-​	-sellergoods-service 商家商品服务模块    [port：9001]
+​	-sellergoods-service 商家商品服务模块    [tomcat port：9001] [dubbo port：20881]
 
 ​	-content-service 广告管理服务模块   [port：9002]
 
@@ -33,6 +35,8 @@
 ​	-page-service 商品详情页  [port：9005]
 
 ​	-user-service 用户服务实现 [port：9006]
+
+​	-cart-service 购物车服务 [port：9007]
 
 **Xmall-xxxxx-web     某web工程**  
 
@@ -53,6 +57,8 @@
 ​	-page-web   商品详情静态化  [port：9105]
 
 ​	-user-web  用户中心web  [port：9106]
+
+​	-cart-web 购物车 [port：9107]
 
 
 

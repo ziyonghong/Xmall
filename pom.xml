@@ -292,5 +292,8 @@
 		<module>Xmall-user-interface</module>
 		<module>Xmall-user-service</module>
 		<module>Xmall-user-web</module>
+		<module>Xmall-cart-interface</module>
+		<module>Xmall-cart-service</module>
+		<module>Xmall-cart-web</module>
 	</modules>
 </project>
