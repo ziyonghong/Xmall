@@ -24,6 +24,8 @@
 
 ​	-cart-interface 购物车服务接口
 
+​	-order-interface 订单接口
+
 **Xmall-xxxxx-service   某服务层实现**
 
 ​	-sellergoods-service 商家商品服务模块    [tomcat port：9001] [dubbo port：20881]
@@ -37,6 +39,8 @@
 ​	-user-service 用户服务实现 [port：9006]
 
 ​	-cart-service 购物车服务 [port：9007]
+
+​	-order-service 订单服务 [port：9008]
 
 **Xmall-xxxxx-web     某web工程**  
 
@@ -59,6 +63,8 @@
 ​	-user-web  用户中心web  [port：9106]
 
 ​	-cart-web 购物车 [port：9107]
+
+  		 购物车依赖cart-service，user-service，order-service
 
 
 

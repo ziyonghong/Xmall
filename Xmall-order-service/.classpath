@@ -33,9 +33,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-cart-interface"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-dao"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-user-interface"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-order-interface"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -5,9 +5,9 @@
     <artifactId>Xmall-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>Xmall-cart-service</artifactId>
+  <artifactId>Xmall-order-service</artifactId>
   <packaging>war</packaging>
-  <dependencies>
+   <dependencies>
   
   		<!-- Spring -->
 	<dependency>
@@ -76,28 +76,24 @@
 		<artifactId>servlet-api</artifactId>		
 		<scope>provided</scope>
 	</dependency>
-	
-  	<dependency>
-  		<groupId>com.zyh</groupId>
-  		<artifactId>Xmall-cart-interface</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.zyh</groupId>
-  		<artifactId>Xmall-common</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.zyh</groupId>
-  		<artifactId>Xmall-dao</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.zyh</groupId>
-  		<artifactId>Xmall-user-interface</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  </dependencies>
+
+
+	<dependency>
+		<groupId>com.zyh</groupId>
+		<artifactId>Xmall-common</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.zyh</groupId>
+		<artifactId>Xmall-dao</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.zyh</groupId>
+		<artifactId>Xmall-order-interface</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+   </dependencies>
   
   <build>  
 	  <plugins>	     
@@ -107,11 +103,12 @@
 				<version>2.2</version>
 				<configuration>
 					<!-- 指定端口 -->
-					<port>9007</port>
+					<port>9008</port>
 					<!-- 请求路径 -->
 					<path>/</path>
 				</configuration>
 	  	  </plugin>
 	  </plugins>  
     </build>
+  
 </project>

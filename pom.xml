@@ -295,5 +295,7 @@
 		<module>Xmall-cart-interface</module>
 		<module>Xmall-cart-service</module>
 		<module>Xmall-cart-web</module>
+		<module>Xmall-order-interface</module>
+		<module>Xmall-order-service</module>
 	</modules>
 </project>
