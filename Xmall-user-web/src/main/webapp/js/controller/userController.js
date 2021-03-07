@@ -1,9 +1,9 @@
  //控制层 
-app.controller('userController' ,function($scope,$controller   ,userService){	
+app.controller('userController' ,function($scope,$controller ,userService){	
 	
 	//注册用户
 	$scope.reg=function(){
-		
+		console.log("进入注册");
 		//比较两次输入的密码是否一致
 		if($scope.password!=$scope.entity.password){
 			alert("两次输入密码不一致，请重新输入");
@@ -17,6 +17,7 @@ app.controller('userController' ,function($scope,$controller   ,userService){
 				alert(response.message);
 			}		
 		);
+		console.log("注册成功");
 	}
     
 	//发送验证码
@@ -28,7 +29,7 @@ app.controller('userController' ,function($scope,$controller   ,userService){
 		
 		userService.sendCode($scope.entity.phone  ).success(
 			function(response){
-				alert(response.message);
+			alert(response.message);
 			}
 		);		
 	}

@@ -51,11 +51,11 @@ public class UserController {
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbUser user,String smscode){
 		
-		//鏍￠獙楠岃瘉鐮佹槸鍚︽纭�
-		boolean checkSmsCode = userService.checkSmsCode(user.getPhone(), smscode);
-		if(!checkSmsCode){
-			return new Result(false, "楠岃瘉鐮佷笉姝ｇ‘锛�");
-		}
+		//检查验证码
+//		boolean checkSmsCode = userService.checkSmsCode(user.getPhone(), smscode);
+//		if(!checkSmsCode){
+//			return new Result(false, "楠岃瘉鐮佷笉姝ｇ‘锛�");
+//		}
 		
 		
 		try {
@@ -124,9 +124,9 @@ public class UserController {
 	@RequestMapping("/sendCode")
 	public Result sendCode(String phone){
 		
-		if(!PhoneFormatCheckUtils.isPhoneLegal(phone)){
-			return new Result(false, "鎵嬫満鏍煎紡涓嶆纭�");
-		}
+//		if(!PhoneFormatCheckUtils.isPhoneLegal(phone)){
+//			return new Result(false, "鎵嬫満鏍煎紡涓嶆纭�");
+//		}
 		
 		try {
 			userService.createSmsCode(phone);

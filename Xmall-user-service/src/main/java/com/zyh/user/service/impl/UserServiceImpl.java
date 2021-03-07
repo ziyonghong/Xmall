@@ -166,17 +166,17 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private Destination smsDestination;
 
-	@Value("${template_code}")
-	private String template_code;
+//	@Value("${template_code}")
+//	private String template_code;
 
-	@Value("${sign_name}")
-	private String sign_name;
+//	@Value("${sign_name}")
+//	private String sign_name;
 
 	@Override
 	public void createSmsCode(final String phone) {
 		//1. 生成6位随机数
 		final String smscode = (long) (Math.random() * 1000000) + "";
-		System.out.println("验证码：" + smscode);
+		System.out.println("验证码是：" + smscode);
 		//2. 存入缓存
 		redisTemplate.boundHashOps("smscode").put(phone, smscode);
 		//3.发送到activeMQ	
@@ -186,11 +186,11 @@ public class UserServiceImpl implements UserService {
 			public Message createMessage(Session session) throws JMSException {
 				MapMessage message = session.createMapMessage();
 				message.setString("mobile", phone);// 手机号
-				message.setString("template_code", template_code);// 模板编号
-				message.setString("sign_name", sign_name);// 签名
+//				message.setString("template_code", template_code);// 模板编号
+//				message.setString("sign_name", sign_name);// 签名
 				Map map = new HashMap();
 				map.put("number", smscode);
-				message.setString("param", JSON.toJSONString(map));
+				message.setString("param", JSON.toJSONString(map));				
 				return message;
 			}
 		});

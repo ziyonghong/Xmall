@@ -124,7 +124,9 @@ CAS实现单点登录：
 
 启动tomcat后访问 http://localhost:8080/cas/login
 
-用户名和密码 casuser/Mellon
+用户名和密码 casuser/Mellon  [这个是在WEB-INF下的deployerConfigContext.xml]
+
+后面配置了是通过tb_user验证
 
 
 
