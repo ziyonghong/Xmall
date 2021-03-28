@@ -43,10 +43,23 @@ public class SolrUtil {
 		
 		System.out.println("===结束===");			
 	}	
+	
+	/**
+	 * 导入爬虫的商品数据
+	 * @throws Exception 
+	 */
+	public void importItemDataFromJD() throws Exception{
+		List<TbItem> itemList=  new HtmlParseUtil().parseJD("redis");			
+		solrTemplate.saveBeans(itemList);
+		solrTemplate.commit();
+		
+		System.out.println("===importItemDataFromJD结束===");			
+	}	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		ApplicationContext context=new ClassPathXmlApplicationContext("classpath*:spring/applicationContext*.xml");
 		SolrUtil solrUtil=  (SolrUtil) context.getBean("solrUtil");
-		solrUtil.importItemData();
+//		solrUtil.importItemData();
+		solrUtil.importItemDataFromJD();
 	}
 }

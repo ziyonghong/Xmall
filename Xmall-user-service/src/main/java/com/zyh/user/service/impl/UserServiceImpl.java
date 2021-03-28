@@ -175,7 +175,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void createSmsCode(final String phone) {
 		//1. 生成6位随机数
-		final String smscode = (long) (Math.random() * 1000000) + "";
+		final String 
+		smscode = (long) (Math.random() * 1000000) + "";
 		System.out.println("验证码是：" + smscode);
 		//2. 存入缓存
 		redisTemplate.boundHashOps("smscode").put(phone, smscode);

@@ -77,21 +77,35 @@ app.controller('contentController' ,function($scope,$controller   ,contentServic
 		);
 	}
 	
-	//上传广告图
-	$scope.uploadFile=function(){
-		uploadService.uploadFile().success(
-			function(response){
-				if(response.success){
-					$scope.entity.pic=response.message;					
-				}else{
-					alert("上传失败！");
-				}
+//	//上传广告图
+//	$scope.uploadFile=function(){
+//		uploadService.uploadFile().success(
+//			function(response){
+//				console.log(response.success);
+//				if(response.success){
+//					$scope.entity.pic=response.message;					
+//				}else{
+//					alert("上传失败！");
+//				}
+//			}
+//		).error(
+//			function(){
+//				alert("上传出错！");
+//			}
+//		);		
+//	}
+	
+	// 文件上传的方法:
+	$scope.uploadFile = function(){
+		uploadService.uploadFile().success(function(response){
+			console.log(response.success);
+			console.log(response.flag);
+			if(response.flag){
+				$scope.entity.pic = response.message;
+			}else{
+				alert(response.message);
 			}
-		).error(
-			function(){
-				alert("上传出错！");
-			}
-		);		
+		});
 	}
 	
 	//加载广告分类列表

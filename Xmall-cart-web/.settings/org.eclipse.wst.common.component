@@ -18,6 +18,12 @@
         <dependent-module archiveName="Xmall-user-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Xmall-user-interface/Xmall-user-interface">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="Xmall-order-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Xmall-order-interface/Xmall-order-interface">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Xmall-pay-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Xmall-pay-interface/Xmall-pay-interface">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="Xmall-cart-web"/>
         <property name="java-output-path" value="/Xmall-cart-web/build/classes"/>
     </wb-module>

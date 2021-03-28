@@ -47,5 +47,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-commons/1.11.5.RELEASE/spring-data-commons-1.11.5.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/activemq/activemq-client/5.13.4/activemq-client-5.13.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-common"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/javassist/javassist/3.20.0.GA/javassist-3.20.0-GA.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

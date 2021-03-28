@@ -41,5 +41,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Xmall-pojo"/>
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/springframework/data/spring-data-solr/1.5.5.RELEASE/spring-data-solr-1.5.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/apache/solr/solr-solrj/4.10.3/solr-solrj-4.10.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/jsoup/jsoup/1.10.2/jsoup-1.10.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

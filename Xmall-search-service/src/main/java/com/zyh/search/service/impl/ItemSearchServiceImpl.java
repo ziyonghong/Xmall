@@ -30,6 +30,8 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.zyh.pojo.TbItem;
 import com.zyh.search.service.ItemSearchService;
 
+import util.HtmlParseUtil;
+
 @Service(timeout = 3000)
 public class ItemSearchServiceImpl implements ItemSearchService {
 	@Autowired
@@ -42,6 +44,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 	public Map search(Map searchMap) {
 		// 关键字空格处理
 		String keywords = (String) searchMap.get("keywords");
+		System.out.println(keywords);
 		searchMap.put("keywords", keywords.replace(" ", ""));
 
 		Map<String, Object> map = new HashMap<>();
@@ -53,14 +56,14 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		map.put("categoryList", categoryList);
 
 		// 3.查询品牌和规格列表
-		String categoryName = (String) searchMap.get("category");
-		if (!"".equals(categoryName)) {// 如果有分类名称
-			map.putAll(searchBrandAndSpecList(categoryName));
-		} else {// 如果没有分类名称，按照第一个查询
-			if (categoryList.size() > 0) {
-				map.putAll(searchBrandAndSpecList(categoryList.get(0)));
-			}
-		}
+//		String categoryName = (String) searchMap.get("category");
+//		if (!"".equals(categoryName)) {// 如果有分类名称
+//			map.putAll(searchBrandAndSpecList(categoryName));
+//		} else {// 如果没有分类名称，按照第一个查询
+//			if (categoryList.size() > 0) {
+//				map.putAll(searchBrandAndSpecList(categoryList.get(0)));
+//			}
+//		}
 
 		return map;
 	}
@@ -199,29 +202,36 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 	 *            分类名称
 	 * @return
 	 */
-	private Map searchBrandAndSpecList(Object object) {
-		Map map = new HashMap();
-		Long typeId = (Long) redisTemplate.boundHashOps("itemCat").get(object);// 获取模板ID
-		if (typeId != null) {
-			// 根据模板ID查询品牌列表
-			List brandList = (List) redisTemplate.boundHashOps("brandList").get(typeId);
-			map.put("brandList", brandList);// 返回值添加品牌列表
-
-			// System.out.println("品牌列表条数： "+brandList.size());
-
-			// 根据模板ID查询规格列表
-			List specList = (List) redisTemplate.boundHashOps("specList").get(typeId);
-			map.put("specList", specList);
-			// System.out.println("规格列表条数： "+specList.size());
-		}
-		return map;
-	}
+//	private Map searchBrandAndSpecList(Object object) {
+//		Map map = new HashMap();
+//		Long typeId = (Long) redisTemplate.boundHashOps("itemCat").get(object);// 获取模板ID
+//		if (typeId != null) {
+//			// 根据模板ID查询品牌列表
+//			List brandList = (List) redisTemplate.boundHashOps("brandList").get(typeId);
+//			map.put("brandList", brandList);// 返回值添加品牌列表
+//
+//			// System.out.println("品牌列表条数： "+brandList.size());
+//
+//			// 根据模板ID查询规格列表
+//			List specList = (List) redisTemplate.boundHashOps("specList").get(typeId);
+//			map.put("specList", specList);
+//			// System.out.println("规格列表条数： "+specList.size());
+//		}
+//		return map;
+//	}
 
 	@Override
 	public void importList(List list) {
 		solrTemplate.saveBeans(list);
 		solrTemplate.commit();
 	}
+	
+//	@Override
+//	public void importList(String keywords) throws Exception {
+//		List<TbItem> tbItem=new HtmlParseUtil().parseJD(keywords);
+//		solrTemplate.saveBeans(tbItem);
+//		solrTemplate.commit();
+//	}
 
 	@Override
 	public void deleteByGoodsIds(List goodsIdList) {

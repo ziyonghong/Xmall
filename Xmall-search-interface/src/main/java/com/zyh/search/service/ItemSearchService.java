@@ -11,6 +11,13 @@ public interface ItemSearchService {
 	 */
 	public Map<String,Object> search(Map searchMap);
 	
+//	/**
+//	 * 导入数据
+//	 * @param keyword
+//	 * @throws Exception 
+//	 */
+//	public void importList(String keyword) throws Exception;
+	
 	/**
 	 * 导入数据
 	 * @param list

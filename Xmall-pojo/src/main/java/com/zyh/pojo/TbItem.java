@@ -103,11 +103,13 @@ public class TbItem implements Serializable {
     public BigDecimal getPrice() {
         return price;
     }
+    
 
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
+    
     public Integer getStockCount() {
         return stockCount;
     }

@@ -2,6 +2,7 @@ package com.zyh.search.controller;
 
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,4 +20,10 @@ public class ItemSearchController {
 	public Map<String, Object> search(@RequestBody Map searchMap ){
 		return  itemSearchService.search(searchMap);
 	}	
+	
+	
+//	@RequestMapping("/prase")
+//	public void prase( ) throws Exception{
+//		itemSearchService.importList("python");
+//	}	
 }

@@ -170,9 +170,11 @@
 						</tr>
 						<tr>
 							<td>图片</td>
-							<td><input type="file" id="file">
-								<button ng-click="uploadFile()">上传</button> <img alt=""
-								src="{{entity.pic}}" height="100px" width="200px"></td>
+							<td>
+                             	<input type="file" id="file"/>
+                             	<input type="button" value="上传" ng-click="uploadFile()"/>
+                             	<img src="{{entity.pic}}" width="200" height="100">
+                             </td>
 						</tr>
 						<tr>
 

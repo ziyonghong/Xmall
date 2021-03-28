@@ -26,6 +26,10 @@
 
 ​	-order-interface 订单接口
 
+​	-pay-interface 支付接口
+
+​	-seckill-interface 秒杀接口
+
 **Xmall-xxxxx-service   某服务层实现**
 
 ​	-sellergoods-service 商家商品服务模块    [tomcat port：9001] [dubbo port：20881]
@@ -41,6 +45,10 @@
 ​	-cart-service 购物车服务 [port：9007]
 
 ​	-order-service 订单服务 [port：9008]
+
+​	-pay-service 支付服务 [port：9000]
+
+​	-seckill-service 秒杀服务 [port：9009]
 
 **Xmall-xxxxx-web     某web工程**  
 
@@ -64,7 +72,9 @@
 
 ​	-cart-web 购物车 [port：9107]
 
-  		 购物车依赖cart-service，user-service，order-service
+  		 购物车依赖cart-service，user-service，order-service，pay-service
+
+​	-seckill-web 秒杀web  [port：9109]
 
 
 
@@ -82,19 +92,23 @@ Run As -> Maven build ->tomcat7:run 启动tomcat插件
 
 
 
-##### 遗留：HDFS上传图片失败
+##### 遗留todo：1.FastDFS上传图片失败
+
+报错：ClassNotFoundException: org.csource.fastdfs.ClientGlobal
+
+##### 2.solr搜索已解决，但前端展示问题需要优化
+
+[title太长，需要在前端截取比较合理，但目前对前端不熟悉。如果在后端做截取的话就不太合理]
+
+有重复的数据展示问题，不知道是不是我执行了过多次solrutil，但只是部分图片有重复，问题根源待排查
+
+
+
+图片logo问题：在webbase.css中，有时候更改无效可能是缓存问题
 
 
 
 
-
-
-
-问题记录：
-
-1.[“Source folder is not a Java project” error in eclipse](https://stackoverflow.com/questions/11719545/source-folder-is-not-a-java-project-error-in-eclipse)  解决办法：
-
-执行mvn eclipse:eclipse 将工程变为java项目
 
 
 
@@ -104,7 +118,7 @@ Run As -> Maven build ->tomcat7:run 启动tomcat插件
 
 Doubble的注册中心Zookeeper 服务启动步骤：
 
-1.虚拟机 pingyougou-server    用户root，密码itcast
+1.虚拟机 xmall-server    用户root，密码itcast
 
 ​       项目放置于 root's Home ->  Xmall下
 
@@ -116,7 +130,7 @@ Doubble的注册中心Zookeeper 服务启动步骤：
 
 ​		查看状态：./zkServer.sh status （启动状态 **Mode：standalone**， 未启动状态： Error）
 
-
+zookeeper管理端：http://192.168.25.128:8080/dubbo-admin/ ,登录用户名和密码均为root 进入首页。 (192.168.25.128:)是我部署的linux主机地址。
 
 
 
@@ -132,7 +146,7 @@ window启动方式：双击在F:\project\apache-tomcat-solr\bin目录在的start
 
 CAS实现单点登录：
 
-（已将加压的solr的war包放入tomcat下的webapps）
+（已将解压的solr的war包放入tomcat下的webapps）
 
 启动tomcat后访问 http://localhost:8080/cas/login
 
@@ -162,7 +176,7 @@ ActiveMQ启动：
 
 
 
-
+网页静态化生成页面生成的位置：pagedir=f:\\project\\item\\
 
 
 
@@ -170,8 +184,26 @@ ActiveMQ启动：
 
 运营商管理后台   账号：admin   密码：123456
 
+user 登录入口  账号：zhubajie  123456
+
+商家使用过程：进入http://localhost:9102/register.html 申请入驻，会跳到login.html
+
+但要管理员申请后才能登录。 管理员申请：
 
 
 
 
-网页静态化生成页面生成的位置：pagedir=f:\\project\\item\\
+
+
+
+
+
+###### 问题记录：
+
+1.[“Source folder is not a Java project” error in eclipse](https://stackoverflow.com/questions/11719545/source-folder-is-not-a-java-project-error-in-eclipse)  解决办法：
+
+执行mvn eclipse:eclipse 将工程变为java项目
+
+2.VMWare遇到“Cannot open the disk 'XXX' or one of the snapshot disks it depends on. reason: failed to ”
+
+https://blog.csdn.net/bottlerun/article/details/7477517

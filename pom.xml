@@ -101,7 +101,7 @@
 				<groupId>javassist</groupId>
 				<artifactId>javassist</artifactId>
 				<version>3.11.0.GA</version>
-			</dependency>
+			</dependency> 
 			<dependency>
 			    <groupId>commons-codec</groupId>
 			    <artifactId>commons-codec</artifactId>
@@ -297,5 +297,10 @@
 		<module>Xmall-cart-web</module>
 		<module>Xmall-order-interface</module>
 		<module>Xmall-order-service</module>
+		<module>Xmall-pay-interface</module>
+		<module>Xmall-pay-service</module>
+		<module>Xmall-seckill-interface</module>
+		<module>Xmall-seckill-service</module>
+		<module>Xmall-seckill-web</module>
 	</modules>
 </project>

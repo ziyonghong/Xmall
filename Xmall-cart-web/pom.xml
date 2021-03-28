@@ -130,6 +130,11 @@
 			<artifactId>Xmall-order-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.zyh</groupId>
+			<artifactId>Xmall-pay-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
   </dependencies>
   
   
