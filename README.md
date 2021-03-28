@@ -72,7 +72,7 @@
 
 ​	-cart-web 购物车 [port：9107]
 
-  		 购物车依赖cart-service，user-service，order-service，pay-service
+  		购物车依赖cart-service，user-service，order-service，pay-service
 
 ​	-seckill-web 秒杀web  [port：9109]
 
