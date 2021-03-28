@@ -50,7 +50,7 @@
 			<div class="fr search">
 				<form class="sui-form form-inline">
 					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
+						<input type="text" type="text" class="input-error input-xxlarge" placeholder="寻秒自营" />
 						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
 					</div>
 				</form>
@@ -94,7 +94,7 @@
 								</li>
 								<li class="yui3-u-1-8"><span class="sum">{{item.totalFee}}</span></li>
 								<li class="yui3-u-1-8">
-									<a href="#none">删除</a><br />
+									<a href="#none" ng-click="addGoodsToCartList(orderItem.itemId,-orderItem.num)">删除</a><br />
 									<a href="#none">移到我的关注</a>
 								</li>
 							</ul>

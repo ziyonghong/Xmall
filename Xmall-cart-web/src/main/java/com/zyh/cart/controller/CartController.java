@@ -22,88 +22,85 @@ import entity.Result;
 @RequestMapping("/cart")
 public class CartController {
 
-	@Reference(timeout=6000)
+	@Reference(timeout = 6000)
 	private CartService cartService;
-	
+
 	@Autowired
 	private HttpServletRequest request;
-	
+
 	@Autowired
 	private HttpServletResponse response;
-	
+
 	@RequestMapping("/findCartList")
-	public List<Cart> findCartList(){
-		//得到登陆人账号,判断当前是否有人登陆
+	public List<Cart> findCartList() {
+		// 得到登陆人账号,判断当前是否有人登陆
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		System.out.println("褰撳墠鐧诲綍浜猴細"+username);
-		
+		System.out.println("当前登录人：" + username);
+
 		String cartListString = util.CookieUtil.getCookieValue(request, "cartList", "UTF-8");
-		if(cartListString==null || cartListString.equals("")){
-			cartListString="[]";
+		if (cartListString == null || cartListString.equals("")) {
+			cartListString = "[]";
 		}
 		List<Cart> cartList_cookie = JSON.parseArray(cartListString, Cart.class);
-		
-		if(username.equals("anonymousUser")){//濡傛灉鏈櫥褰�
-			//浠巆ookie涓彁鍙栬喘鐗╄溅
-			System.out.println("浠巆ookie涓彁鍙栬喘鐗╄溅");
-						
+
+		if (username.equals("anonymousUser")) {// 如果未登录
+			// 从cookie中提取购物车
+			System.out.println("从cookie中提取购物车");
+
 			return cartList_cookie;
-			
-		}else{//濡傛灉宸茬櫥褰�
-			//鑾峰彇redis璐墿杞�
+
+		} else {// 如果已登录
+				// 获取redis购物车
 			List<Cart> cartList_redis = cartService.findCartListFromRedis(username);
-			if(cartList_cookie.size()>0){//鍒ゆ柇褰撴湰鍦拌喘鐗╄溅涓瓨鍦ㄦ暟鎹�
-				//寰楀埌鍚堝苟鍚庣殑璐墿杞�
+			if (cartList_cookie.size() > 0) {// 判断当本地购物车中存在数据
+				// 得到合并后的购物车
 				List<Cart> cartList = cartService.mergeCartList(cartList_cookie, cartList_redis);
-				//灏嗗悎骞跺悗鐨勮喘鐗╄溅瀛樺叆redis 
+				// 将合并后的购物车存入redis
 				cartService.saveCartListToRedis(username, cartList);
-				//鏈湴璐墿杞︽竻闄�
+				// 本地购物车清除
 				util.CookieUtil.deleteCookie(request, response, "cartList");
-				System.out.println("鎵ц浜嗗悎骞惰喘鐗╄溅鐨勯�昏緫");
+				System.out.println("执行了合并购物车的逻辑");
 				return cartList;
-			}						
+			}
 			return cartList_redis;
 		}
-				
+
 	}
-	
+
 	@RequestMapping("/addGoodsToCartList")
-	@CrossOrigin(origins="http://localhost:9105")
-	public Result addGoodsToCartList(Long itemId,Integer num){
-		
-		//response.setHeader("Access-Control-Allow-Origin", "http://localhost:9105");//鍙互璁块棶鐨勫煙(褰撴鏂规硶涓嶉渶瑕佹搷浣渃ookie)
-		//response.setHeader("Access-Control-Allow-Credentials", "true");//濡傛灉鎿嶄綔cookie锛屽繀椤诲姞涓婅繖鍙ヨ瘽
-		
-		//褰撳墠鐧诲綍浜鸿处鍙�
+	@CrossOrigin(origins = "http://localhost:9105")
+	public Result addGoodsToCartList(Long itemId, Integer num) {
+
+		//response.setHeader("Access-Control-Allow-Origin", "http://localhost:9105");//可以访问的域(当此方法不需要操作cookie)
+		//response.setHeader("Access-Control-Allow-Credentials", "true");//如果操作cookie，必须加上这句话
+
+		// 当前登录人账号
 		String name = SecurityContextHolder.getContext().getAuthentication().getName();
-		System.out.println("褰撳墠鐧诲綍浜猴細"+name);
-		
-	
-		
+		System.out.println("当前登录人：" + name);
+
 		try {
-			//鎻愬彇璐墿杞�
+			//提取购物车
 			List<Cart> cartList = findCartList();
-			//璋冪敤鏈嶅姟鏂规硶鎿嶄綔璐墿杞�
+			//调用服务方法操作购物车
 			cartList = cartService.addGoodsToCartList(cartList, itemId, num);
 			
-			if(name.equals("anonymousUser")){//濡傛灉鏈櫥褰�
-				//灏嗘柊鐨勮喘鐗╄溅瀛樺叆cookie
+			if(name.equals("anonymousUser")){//如果未登录
+				//将新的购物车存入cookie
 				String cartListString = JSON.toJSONString(cartList);
 				util.CookieUtil.setCookie(request, response, "cartList", cartListString, 3600*24, "UTF-8");
-				System.out.println("鍚慶ookie瀛樺偍璐墿杞�");		
+				System.out.println("向cookie存储购物车");		
 				
-			}else{//濡傛灉鐧诲綍				
+			}else{//如果登录				
 				cartService.saveCartListToRedis(name, cartList);				
 			}
 
-			return new Result(true, "瀛樺叆璐墿杞︽垚鍔�");
+			return new Result(true, "存入购物车成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "瀛樺叆璐墿杞﹀け璐�");
+			return new Result(false, "存入购物车失败");
 		}
 		
 		
 	}
-	
-	
+
 }

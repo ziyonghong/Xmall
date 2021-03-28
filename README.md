@@ -146,7 +146,7 @@ window启动方式：双击在F:\project\apache-tomcat-solr\bin目录在的start
 
 CAS实现单点登录：
 
-（已将解压的solr的war包放入tomcat下的webapps）
+（已将解压的CAS的war包放入tomcat下的webapps）
 
 启动tomcat后访问 http://localhost:8080/cas/login
 
@@ -184,7 +184,7 @@ ActiveMQ启动：
 
 运营商管理后台   账号：admin   密码：123456
 
-user 登录入口  账号：zhubajie  123456
+user 登录入口  账号：zhubajie  123123
 
 商家使用过程：进入http://localhost:9102/register.html 申请入驻，会跳到login.html
 
